@@ -11,18 +11,18 @@ The objective of developing a prototype Solar Project Management tool that conne
 ### Agile Methodology:
 - Scrum Agile Methodology
 
-# Tech Stack
-## UI
+## Tech Stack
+### UI
 - Angular JS
 
-## Backend
+### Backend
 - Node JS
 
-## Database
+### Database
 - AWS RDS SQL Server Express Edition
 
-## Servers
+### Servers
 - AWS EC2
 
-## CI/CD
+### CI/CD
 - Jenkins
