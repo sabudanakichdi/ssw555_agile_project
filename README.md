@@ -1,9 +1,11 @@
 ## Installation
 
 ### To install dependencies
-bash
-  npm install 
+'''bash
+  npm install
+  '''
 
 ### To run the app
-bash
+'''bash
   npm run dev
+  '''
