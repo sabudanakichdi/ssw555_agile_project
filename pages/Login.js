@@ -18,8 +18,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <nav>
-      <main className=" bg-white  dark:bg-gray-900 ">
-      <section className=" p-2 m-2 ">
+        <main className=" bg-white  dark:bg-gray-900 ">
+          <section className=" p-2 m-2 ">
             <div className="py-10 mb-12  flex-row-reverse dark:text-white">
               <div class="flex flex-row-reverse ...">
                 <div className="p-5 m-2">
@@ -100,6 +100,10 @@ export default function Home() {
                 </div>
               </div>
             </section>
+          </div>
+          <div className="p-5 m-2">
+            {" "}
+            <Link href="/Agreement">Agreement</Link>
           </div>
         </main>
       </nav>
