@@ -2,25 +2,25 @@ module.exports = (sequelize, Sequelize) => {
 
     const Customer = sequelize.define(“article”, {
 
-        utilityCompany: {
-            type: Sequelize.STRING
-        },
-        energyUsage: {
-            type: Sequelize.NUMBER
-        },
-        roofType: {
-            type: Sequelize.STRING
-        },
-        notes: {
-            type: Sequelize.STRING
-        },
         salesAgreementId: {
             type: Sequelize.STRING
         },
-        orderAmount: {
-            type: Sequelize.NUMBER
+        date: {
+            type: Sequelize.DATE
         },
-        projectLocation: {
+        isSigned: {
+            type: Sequelize.BOOLEAN
+        },
+        signedBy: {
+            type: Sequelize.STRING
+        },
+        isApproved: {
+            type: Sequelize.STRING
+        },
+        generatedById: {
+            type: Sequelize.STRING
+        },
+        notes: {
             type: Sequelize.STRING
         }
     });
