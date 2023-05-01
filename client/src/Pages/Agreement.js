@@ -43,7 +43,7 @@ function Agreement() {
           </label>
           {agreed && (
             <Link
-              to="/CustomerInstallationPage"
+              to="/CustomerOnBoardingPage"
               class="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none rounded ml-4"
             >
               Continue

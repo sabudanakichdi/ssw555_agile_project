@@ -1,6 +1,8 @@
 {
-  "name": "react-portfolio",
+  "name": "client",
   "version": "0.1.0",
+  "description": "Solar Project Frontend",
+  "main": "index.js",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.13",

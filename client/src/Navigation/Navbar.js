@@ -16,7 +16,7 @@ function Navbar() {
                     href="/"
                     className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-l font-medium"
                   >
-                    Contact Us
+                    AboutUs
                   </a>
 
                   <a
@@ -27,10 +27,10 @@ function Navbar() {
                   </a>
 
                   <a
-                    href="/AboutUs"
+                    href="/ContactUs"
                     className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-l font-medium"
                   >
-                    About Us
+                    Contact Us
                   </a>
 
                   <a

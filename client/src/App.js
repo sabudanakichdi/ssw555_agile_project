@@ -2,7 +2,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import BookADemo from "./Pages/BookADemo";
-import AboutUs from "./Pages/AboutUs";
+import ContactUs from "./Pages/ContactUs";
 import Pricing from "./Pages/Pricing";
 import NoMatch from "./Pages/NoMatch";
 import OurWork from "./Pages/OurWork";
@@ -10,7 +10,7 @@ import MyAccount from "./Pages/MyAccount";
 import Agreement from "./Pages/Agreement";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
-import CustomerInstallationPage from "./Pages/CustomerInstallationPage";
+import CustomerOnBoardingPage from "./Pages/CustomerOnBoardingPage";
 import "./App.css";
 import "./index.css";
 import Navbar from "./Navigation/Navbar";
@@ -25,13 +25,13 @@ const App = () => {
         <Route path="*" element={<NoMatch />} />
         <Route path="/BookADemo" element={<BookADemo />} />
         <Route path="/OurWork" element={<OurWork />} />
-        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/Pricing" element={<Pricing />} />
         <Route path="/MyAccount" element={<MyAccount />} />
         <Route path="/Agreement" element={<Agreement />} />
         <Route
-          path="/CustomerInstallationPage"
-          element={<CustomerInstallationPage />}
+          path="/CustomerOnBoardingPage"
+          element={<CustomerOnBoardingPage />}
         />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
