@@ -14,8 +14,8 @@ const customer = require('../models/customer');
 // @desc Register a user
 // @access Public
 router.post('/', auth, [
-    check("email", "Please include valid email").isEmail(),
-    check("password", "Please enter password with 8 or more character").isLength({ min: 6 })
+    check("email_id", "Please include valid email").isEmail(),
+    check("first_name", "Please enter password with 8 or more character").isLength({ min: 6 })
 ], async (req, res) => {
 
     const errors = validationResult(req);

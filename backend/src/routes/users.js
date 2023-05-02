@@ -96,7 +96,7 @@ router.post('/', [
 // @desc Login user
 // @access Public
 router.post('/', [
-    check("email", "Please include valid email").isEmail(),
+    check("email_id", "Please include valid email").isEmail(),
     check("password", "Please enter password with 8 or more character").isLength({ min: 6 })
 ], async (req, res) => {
 
