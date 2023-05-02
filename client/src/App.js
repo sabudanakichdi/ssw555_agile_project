@@ -10,7 +10,10 @@ import MyAccount from "./Pages/MyAccount";
 import Agreement from "./Pages/Agreement";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
-import CustomerOnBoardingPage from "./Pages/CustomerOnBoardingPage";
+import OnBoarding from "./Pages/OnBoarding";
+import EstimationPage from "./Pages/EstimationPage";
+import Payment from "./Pages/Payment";
+import Tracking from "./Pages/Tracking";
 import "./App.css";
 import "./index.css";
 import Navbar from "./Navigation/Navbar";
@@ -29,12 +32,12 @@ const App = () => {
         <Route path="/Pricing" element={<Pricing />} />
         <Route path="/MyAccount" element={<MyAccount />} />
         <Route path="/Agreement" element={<Agreement />} />
-        <Route
-          path="/CustomerOnBoardingPage"
-          element={<CustomerOnBoardingPage />}
-        />
+        <Route path="/OnBoarding" element={<OnBoarding />} />
+        <Route path="/EstimationPage" element={<EstimationPage />} />
+        <Route path="/Tracking" element={<Tracking />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Payment" element={<Payment />} />
       </Routes>
       <Footer />
     </>
