@@ -3,7 +3,7 @@ function OnBoarding() {
     <div class="container mx-auto flex p-5 py-24 md:flex-col flex-col items-center  min-h-screen ">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Contact Sales
+          Customer OnBoarding
         </h2>
       </div>
 
