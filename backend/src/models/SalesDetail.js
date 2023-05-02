@@ -26,23 +26,18 @@ const SalesDetailSchema = new Schema({
     },
     installation_charges: {
         type: STRING,
-        required: true
     },
     solar_panel_charges: {
         type: STRING,
-        required: true
     },
     tax: {
         type: STRING,
-        required: true
     },
     grandTotal: {
         type: STRING,
-        required: true
     },
     isPaymentComplete: {
         type: Boolean,
-        required: true
     },
 });
 

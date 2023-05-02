@@ -68,8 +68,9 @@ router.post('/', [
                     console.log("Register Failed: Updated Docs : ", docs);
                 }
             });
+        const dbPersist = dbRes.acknowledged;
 
-        if (!dbRes) {
+        if (!dbPersist) {
             console.log("Register Failed: DB persist isssue");
             return res.status(400).json({ msg: "Cannot Register. Please try again later" });
         }
