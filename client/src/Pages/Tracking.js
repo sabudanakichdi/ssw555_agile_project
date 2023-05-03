@@ -9,3 +9,33 @@ export default function Tracking() {
     </div>
   );
 }
+
+import React, { useState } from 'react';
+
+function Tracking() {
+  const [deliveryDate, setDeliveryDate] = useState('');
+
+  const handleDeliveryDateChange = (event) => {
+    setDeliveryDate(event.target.value);
+  };
+
+  return (
+    <div>
+      <h2>Order Summary</h2>
+      <p>Order placed</p>
+      <p>Processing</p>
+      <p>Shipped</p>
+      <p>Delivered</p>
+      <label htmlFor="deliveryDate">Desired delivery date:</label>
+      <input
+        type="date"
+        id="deliveryDate"
+        name="deliveryDate"
+        value={deliveryDate}
+        onChange={handleDeliveryDateChange}
+      />
+    </div>
+  );
+}
+
+export default Tracking;
