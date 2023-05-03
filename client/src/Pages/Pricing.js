@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Pricing() {
   return (
     <div>
@@ -8,6 +10,16 @@ function Pricing() {
               <p class="text-xl text-neutral-700  font-medium title-font mb-5">
                 Have Questions about how much would it cost?
               </p>
+              <div>
+                <Link to="/ContactUs">
+                  <button
+                    type="submit"
+                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    Contact US
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
