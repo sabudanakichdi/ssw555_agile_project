@@ -2,20 +2,19 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const auth = require('../middleware/auth');
+const auth = require('../config/auth');
 
 const { check, validationResult } = require('express-validator');
 const Customer = require('../models/Customers');
 const SalesDetail = require('../models/SalesDetail');
 const User = require('../models/Users');
-const customer = require('../models/customer');
 
 // @route POST api/customerdetails
 // @desc Register a user
 // @access Public
 router.post('/', auth, [
     check("email_id", "Please include valid email").isEmail(),
-    check("first_name", "Please enter password with 8 or more character").isLength({ min: 6 })
+    check("first_name", "Please enter name with 8 or more character").isLength({ min: 1 })
 ], async (req, res) => {
 
     const errors = validationResult(req);
@@ -63,6 +62,7 @@ router.post('/', auth, [
             user.creation_date = year + month + day;
             //Save user registeration data
             const userRes = await user.save();
+            console.log(userRes);
             if (userRes) {
                 userid = userRes.id;
             } else {
@@ -156,7 +156,7 @@ router.post('/', auth, [
                     }
                 });
         } else {
-            const salesId = {
+            const salesId = new SalesDetail{
                 customer_id,
                 area,
                 typOfInstallation,
@@ -168,7 +168,7 @@ router.post('/', auth, [
                 grandTotal,
                 isPaymentComplete,
             }
-            salesIs.customer_id = customer_id;
+            salesId.customer_id = customer_id;
             salesId.area = area;
             salesId.typOfInstallation = type_of_installation;
             salesId.deliveryDate = delivery_date;
@@ -180,6 +180,7 @@ router.post('/', auth, [
             salesId.isPaymentComplete = '';
             salesRes = await salesId.save();
         }
+        console.log(salesRes);
         if (!salesRes) {
             console.log("Customr Onboard Failed: DB Sales Details persist isssue");
             return res.status(400).json({ msg: "Cannot Register. Please try again later" });

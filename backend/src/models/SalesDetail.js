@@ -21,7 +21,7 @@ const SalesDetailSchema = new Schema({
         type: STRING,
     },
     isAgreement: {
-        type: Boolean,
+        type: STRING,
         required: false
     },
     installation_charges: {
@@ -37,7 +37,7 @@ const SalesDetailSchema = new Schema({
         type: STRING,
     },
     isPaymentComplete: {
-        type: Boolean,
+        type: STRING,
     },
 });
 

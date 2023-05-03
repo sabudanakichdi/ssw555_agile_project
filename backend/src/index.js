@@ -1,34 +1,47 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
-
-// defining the Express app
 const app = express();
-// defining an array to work as the database (temporary solution)
-const ads = [
-    { title: 'Hello, world (again)!' }
-];
+const connectDB = require('./config/db');
+const path = require('path');
+//connect to Database
+connectDB()
 
-// adding Helmet to enhance your Rest API's security
-app.use(helmet());
 
-// using bodyParser to parse JSON bodies into JS objects
-app.use(bodyParser.json());
 
-// enabling CORS for all requests
-app.use(cors());
 
-// adding morgan to log HTTP requests
-app.use(morgan('combined'));
+// initialise middleware
+app.use(express.json({ extended: false }));
 
-// defining an endpoint to return all ads
-app.get('/', (req, res) => {
-    res.send(ads);
-});
+// Define Routes
+app.use('/api/register', require('./routes/users'))
+app.use('/api/login', require('./routes/users'))
+app.use('/api/customerdetails', require('./routes/customer'))
+app.use('/api/isAgreement', require('./routes/salesDetail'))
+app.use('/api/isPayment', require('./routes/salesDetail'))
+app.use('/api/status', require('./routes/salesDetail'))
+app.use('/api/installDate', require('./routes/salesDetail'))
+app.use('/api/tracking', require('./routes/salesDetail'))
+app.use('/api/isToggle', require('./routes/salesDetail'))
+app.use('/api/auth', require('./routes/auth'))
 
-// starting the server
-app.listen(3001, () => {
-    console.log('listening on port 3001');
-});
+
+
+////server static assets in production
+
+
+//// set static folder
+//app.use(express.static('client/build'));
+
+//app.get('*', (req, res) => {
+
+//    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+
+//})
+
+
+
+const PORT = process.env.PORT || 5000;
+
+// Start the server @ port 
+app.listen(PORT, () => {
+    console.log(`server started at ${PORT}`);
+})

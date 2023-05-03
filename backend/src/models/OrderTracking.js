@@ -9,40 +9,20 @@ const OrderTrackingSchema = new Schema({
         type: String,
         required: true,
     },
-    area: {
+    sales_id: {
+        type: String,
+        required: true,
+    },
+    bo_status: {
         type: STRING,
         required: true
     },
-    type_of_installation: {
+    installation_date: {
         type: STRING,
         required: true
     },
-    delivery_date: {
+    status: {
         type: STRING,
-    },
-    isAgreement: {
-        type: Boolean,
-        required: false
-    },
-    installation_charges: {
-        type: STRING,
-        required: true
-    },
-    solar_panel_charges: {
-        type: STRING,
-        required: true
-    },
-    tax: {
-        type: STRING,
-        required: true
-    },
-    grandTotal: {
-        type: STRING,
-        required: true
-    },
-    isPaymentComplete: {
-        type: Boolean,
-        required: true
     },
 });
 
