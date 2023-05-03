@@ -18,13 +18,13 @@ function Navbar() {
                   >
                     AboutUs
                   </a>
-
+                  {/* 
                   <a
                     href="/BookADemo"
                     className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-l font-medium"
                   >
                     Book A Demo
-                  </a>
+                  </a> */}
 
                   <a
                     href="/ContactUs"
@@ -39,12 +39,12 @@ function Navbar() {
                   >
                     Pricing
                   </a>
-                  <a
+                  {/* <a
                     href="/OurWork"
                     className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-l font-medium"
                   >
                     Our Works
-                  </a>
+                  </a> */}
                   <a
                     href="/MyAccount"
                     className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-l font-medium"
