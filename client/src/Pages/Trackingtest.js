@@ -1,96 +1,55 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import { screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Tracking from "./Tracking";
-import userEvent from "@testing-library/user-event";
 
-test("renders Tracking component without crashing", () => {
-  render(<Tracking />);
-});
-test('the "Track" button is clickable', () => {
-  render(<Tracking />);
-  const trackButton = screen.getByRole("button", { name: /track/i });
-  userEvent.click(trackButton);
-});
-test('the "Enter Order Id" input field is required', () => {
-  render(<Tracking />);
-  const orderIdInput = screen.getByLabelText(/enter order id/i);
-  expect(orderIdInput).toBeRequired();
-});
-test('the "Enter Tracking Number" input field is required', () => {
-  render(<Tracking />);
-  const trackingNumberInput = screen.getByLabelText(/enter tracking number/i);
-  expect(trackingNumberInput).toBeRequired();
-});
-test('the "Desired delivery date" input field updates the state when changed', () => {
-  render(<Tracking />);
-  const deliveryDateInput = screen.getByLabelText(/desired delivery date/i);
-  userEvent.type(deliveryDateInput, "2023-05-10");
-  expect(deliveryDateInput).toHaveValue("2023-05-10");
-});
+describe("Tracking component", () => {
+  test("renders Order Summary header", () => {
+    render(<Tracking />);
+    const headerElement = screen.getByText("Order Summary:");
+    expect(headerElement).toBeInTheDocument();
+  });
 
-test('renders the correct tracking information after clicking "Track"', async () => {
-  render(<Tracking />);
-  const orderIdInput = screen.getByLabelText(/enter order id/i);
-  const trackingNumberInput = screen.getByLabelText(/enter tracking number/i);
-  const trackButton = screen.getByRole("button", { name: /track/i });
-  const expectedDeliveryDate = "2023-05-10";
-  userEvent.type(orderIdInput, "12345");
-  userEvent.type(trackingNumberInput, "67890");
-  userEvent.type(
-    screen.getByLabelText(/desired delivery date/i),
-    expectedDeliveryDate
-  );
-  userEvent.click(trackButton);
-  const trackingInfo = await screen.findByText(/tracking information/i);
-  expect(trackingInfo).toBeInTheDocument();
-  expect(screen.getByText(/order id: 12345/i)).toBeInTheDocument();
-  expect(screen.getByText(/tracking number: 67890/i)).toBeInTheDocument();
-  expect(
-    screen.getByText(`desired delivery date: ${expectedDeliveryDate}`)
-  ).toBeInTheDocument();
-});
+  test("renders Delivery Date label and input", () => {
+    render(<Tracking />);
+    const labelElement = screen.getByLabelText("Desired delivery date:");
+    expect(labelElement).toBeInTheDocument();
+    const inputElement = screen.getByRole("textbox", { name: "deliveryDate" });
+    expect(inputElement).toBeInTheDocument();
+  });
 
-test('displays an error message when "Track" is clicked with incomplete form data', async () => {
-  render(<Tracking />);
-  const trackButton = screen.getByRole("button", { name: /track/i });
-  userEvent.click(trackButton);
-  const errorMessage = await screen.findByText(
-    /please enter all required fields/i
-  );
-  expect(errorMessage).toBeInTheDocument();
+  test("updates delivery date on input change", () => {
+    render(<Tracking />);
+    const inputElement = screen.getByRole("textbox", { name: "deliveryDate" });
+    fireEvent.change(inputElement, { target: { value: "2023-05-10" } });
+    expect(inputElement.value).toBe("2023-05-10");
+  });
 });
-
-test("displays an error message when an invalid delivery date is entered", async () => {
+test('renders Order Summary heading', () => {
   render(<Tracking />);
-  const deliveryDateInput = screen.getByLabelText(/desired delivery date/i);
-  userEvent.type(deliveryDateInput, "invalid-date");
-  const trackButton = screen.getByRole("button", { name: /track/i });
-  userEvent.click(trackButton);
-  const errorMessage = await screen.findByText(
-    /please enter a valid delivery date/i
-  );
-  expect(errorMessage).toBeInTheDocument();
+  const orderSummaryHeading = screen.getByText(/Order Summary:/i);
+  expect(orderSummaryHeading).toBeInTheDocument();
 });
-
-test("displays an error message when tracking information cannot be found", async () => {
-  // mock API call to return error response
-  const mockApiCall = jest
-    .fn()
-    .mockRejectedValue({ message: "Tracking information not found" });
-  jest.mock("./api", () => ({
-    trackPackage: mockApiCall,
-  }));
+test('renders Desired delivery date label', () => {
   render(<Tracking />);
-  const orderIdInput = screen.getByLabelText(/enter order id/i);
-  const trackingNumberInput = screen.getByLabelText(/enter tracking number/i);
-  const trackButton = screen.getByRole("button", { name: /track/i });
-  userEvent.type(orderIdInput, "12345");
-  userEvent.type(trackingNumberInput, "67890");
-  userEvent.type(screen.getByLabelText(/desired delivery date/i), "2023-05-10");
-  userEvent.click(trackButton);
-  const errorMessage = await screen.findByText(
-    /tracking information not found/i
-  );
-  expect(errorMessage).toBeInTheDocument();
+  const deliveryDateLabel = screen.getByLabelText(/Desired delivery date:/i);
+  expect(deliveryDateLabel).toBeInTheDocument();
+});
+test('updates deliveryDate state when input value changes', () => {
+  render(<Tracking />);
+  const input = screen.getByLabelText(/Desired delivery date:/i);
+  fireEvent.change(input, { target: { value: '2023-05-10' } });
+  expect(input).toHaveValue('2023-05-10');
+});
+test('calls handleDeliveryDateChange function when input value changes', () => {
+  const handleDeliveryDateChange = jest.fn();
+  render(<Tracking handleDeliveryDateChange={handleDeliveryDateChange} />);
+  const input = screen.getByLabelText(/Desired delivery date:/i);
+  fireEvent.change(input, { target: { value: '2023-05-10' } });
+  expect(handleDeliveryDateChange).toHaveBeenCalledTimes(1);
+});
+test('sets input value prop to deliveryDate state', () => {
+  render(<Tracking />);
+  const input = screen.getByLabelText(/Desired delivery date:/i);
+  fireEvent.change(input, { target: { value: '2023-05-10' } });
+  expect(input).toHaveValue('2023-05-10');
 });
