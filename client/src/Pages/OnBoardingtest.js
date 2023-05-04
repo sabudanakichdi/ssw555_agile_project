@@ -1,5 +1,5 @@
 import OnBoarding from "./OnBoarding";
-import React, { useState } from "react";
+import React from "react";
 import { render } from "@testing-library/react";
 import { screen } from "@testing-library/react";
 import { fireEvent } from "@testing-library/react";
