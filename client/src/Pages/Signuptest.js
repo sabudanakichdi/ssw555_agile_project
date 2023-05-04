@@ -57,6 +57,7 @@ it("displays an error message if email is left blank", async () => {
   const emailInput = screen.getByLabelText("Email address");
   const signUpButton = screen.getByText("Sign Up");
 
+  fireEvent.change(emailInput, { target: { value: "" } });
   fireEvent.click(signUpButton);
 
   const errorMessage = await screen.findByText("Email is required.");
@@ -68,6 +69,7 @@ it("displays an error message if phone number is left blank", async () => {
   const phoneInput = screen.getByLabelText("Phone Number");
   const signUpButton = screen.getByText("Sign Up");
 
+  fireEvent.change(phoneInput, { target: { value: "" } });
   fireEvent.click(signUpButton);
 
   const errorMessage = await screen.findByText("Phone number is required.");
@@ -79,6 +81,7 @@ it("displays an error message if password is left blank", async () => {
   const passwordInput = screen.getByLabelText("Password");
   const signUpButton = screen.getByText("Sign Up");
 
+  fireEvent.change(passwordInput, { target: { value: "" } });
   fireEvent.click(signUpButton);
 
   const errorMessage = await screen.findByText("Password is required.");
