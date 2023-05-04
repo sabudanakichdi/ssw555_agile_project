@@ -12,7 +12,7 @@ module.exports = function (req, res, next) {
     }
 
     try {
-        const decoded = jwt.verify(token, config.get('jwtSecretKey'));
+        const decoded = jwt.verify(token, "iamking");
 
         req.user = decoded.user;
         next()

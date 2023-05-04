@@ -3,31 +3,27 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 10  
+      nodejs: 16
     commands:
-      - echo Installing Mocha...
-      - npm install -g mocha
+      - npm install bcryptjs@2.4.3 body-parser@1.20.2 config@3.3.9 cors@2.8.5 date@2.0.2 express@4.18.2 express-validator@7.0.1 helmet@6.1.5 
+      - npm install jsonwebtoken@9.0.0 mongoose@7.1.0 morgan@1.10.0 nodemon@2.0.22 jest@29.5.0
   pre_build:
     commands:
-      - echo Installing source NPM dependencies...
-      - npm install
-      - npm install unit.js
+      - cd ./backend/
   build:
     commands:
-      - echo Build started on `date`
-      - echo Compiling the Node.js code
-      - mocha test.js
-  post_build:
-    commands:
-      - echo Build completed on `date`
+      - echo Build started
+      - npm test
+      - echo Build Complete
+  #post_build:
+  #  commands:
+  #    - echo Build completed on `date`
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
 # used only for building and testing.
 # ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
-artifacts:
-  files:
-    - app.js
-    - index.html
-    - package.json
-    - node_modules/async/*
-    - node_modules/lodash/*
+#artifacts:
+#  files:
+#    - app.js
+#    - index.html
+#    - package.json

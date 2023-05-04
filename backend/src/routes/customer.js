@@ -3,17 +3,16 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const auth = require('../config/auth');
-
 const { check, validationResult } = require('express-validator');
 const Customer = require('../models/Customers');
-const SalesDetail = require('../models/SalesDetail');
+const SalesDetail = require('../models/SalesDetails');
 const User = require('../models/Users');
 
 // @route POST api/customerdetails
 // @desc Register a user
 // @access Public
 router.post('/', auth, [
-    check("email_id", "Please include valid email").isEmail(),
+    check("email_id", "Please include valid email").isLength({ min: 1 }),
     check("first_name", "Please enter name with 8 or more character").isLength({ min: 1 })
 ], async (req, res) => {
 
@@ -37,7 +36,14 @@ router.post('/', auth, [
         isEdit,
         } = req.body;
     try {
-        let checkUser = await User.findOne({ email_id });
+        var checkUser;
+        await User.findOne({ email_id }).exec().then(result => {
+            console.log("Customr Onboard Success: Updated Docs");
+            checkUser = result;
+        })
+    .catch(err => {
+        console.error(err);
+    });
 
         //Checking if there is an existing register email by sales team
         if (checkUser && isEdit === 'N') {
@@ -45,67 +51,50 @@ router.post('/', auth, [
             return res.status(400).json({ msg: "User needs  to be registered by Sales Executive. Please Contact Sales Team" });
         }
 
-        const userid;
+        var user_id;
         if (isEdit == 'Y') {
-        userid = checkUser.user_id;
+            userid = checkUser.id;
         } else {
-            user = new User({
-                email_id,
-                type,
-                creation_date,
-            });
+            user = new User();
             user.email_id = email_id;
-            let day = date.getDate();
-            let month = date.getMonth() + 1;
-            let year = date.getFullYear();
-            console.log(year + month + day);
-            user.creation_date = year + month + day;
+            console.log(new Date());
+            user.creation_date = new Date();
+            user.type_customer = 'customer';
             //Save user registeration data
             const userRes = await user.save();
             console.log(userRes);
             if (userRes) {
-                userid = userRes.id;
+                let getUser = await User.findOne({ email_id });
+                console.log(getUser._id);
+                userid = getUser._id;
             } else {
                 console.log("Customr Onboard Failed: User DB entry failed");
                 return res.status(400).json({ msg: "User entry failed." });
             }
         }
 
-        const dbRes;
+        var dbRes;
         if (isEdit == 'Y') {
-            dbRes = await Customer.updateOne({ email_id: email_id },
+            await Customer.updateOne({ email_id: email_id },
                 {
-                    user_id = userid,
-                    first_name = first_name,
-                    last_name = last_name,
-                    contact = contact,
-                    address = address,
-                    zipcode = zipcode,
-                    country = country,
-                    state = state,
-                    county = county,
-                },
-                function (err, docs) {
-                    if (err) {
-                        console.log(err)
-                    }
-                    else {
-                        console.log("Customr Onboard Failed: Updated Docs : ", docs);
-                    }
+                    user_id : userid,
+                    first_name : first_name,
+                    last_name : last_name,
+                    contact : contact,
+                    address : address,
+                    zipcode : zipcode,
+                    country : country,
+                    state : state,
+                    county : county,
+                }).exec().then(result => {
+                    console.log("Customr Onboard Success: Updated Docs");
+                    dbRes = result.acknowledged
+                })
+                .catch(err => {
+                    console.error(err);
                 });
         } else {
-            customer = new Customr({
-                user_id,
-                first_name,
-                last_name,
-                email_id,
-                contact,
-                address,
-                zipcode,
-                country,
-                state,
-                county,
-            });
+            customer = new Customer();
             customer.user_id = userid;
             customer.first_name = first_name;
             customer.last_name = last_name;
@@ -116,62 +105,49 @@ router.post('/', auth, [
             customer.country = country;
             customer.state = state;
             customer.county = county;
-            dbRes = await Customer.save();
+            dbRes = await customer.save();
 		}
         
-        const customer_id;
+        var customer_id;
         if (!dbRes) {
             console.log("Customr Onboard Failed: DB Customer persist isssue");
             return res.status(400).json({ msg: "Cannot Register. Please try again later" });
         } else {
             const cust = await Customer.findOne({ email_id });
-            customer_id = cust.customer_id;
+            customer_id = cust._id;
         }
 
-        const salesRes;
+        var salesRes;
         var installCharge = area * 40;
         var spCharge = area * 250;
         var tax = (installCharge + spCharge) * 0.1
         var gt = installCharge + spCharge + tax;
         if (isEdit === 'Y') {
-            salesRes = await SalesDetail.updateOne({ customer_id: customer_id },
+            await SalesDetail.updateOne({ customer_id: customer_id },
                 {
-                    customer_id = customer_id,
-                    area = area,
-                    type_of_installation = type_of_installation,
-                    delivery_date = delivery_date,
-                    isAgreement = '',
-                    installation_charges = installCharge,
-                    solar_panel_charges = spCharge,
-                    tax = tax,
-                    grandTotal = gt,
-                    isPaymentComplete = '',
-                },
-                function (err, docs) {
-                    if (err) {
-                        console.log(err)
-                    }
-                    else {
-                        console.log("Customr Onboard Failed: Updated Docs : ", docs);
-                    }
+                    customer_id : customer_id,
+                    area : area,
+                    type_of_installation : type_of_installation,
+                    delivery_date : delivery_date,
+                    isAgreement : '',
+                    installation_charges : installCharge,
+                    solar_panel_charges : spCharge,
+                    tax : tax,
+                    grandTotal : gt,
+                    isPaymentComplete : '',
+                }).exec().then(result => {
+                    console.log("Customr Onboard Success: Sales Updated Docs");
+                    salesRes = result.acknowledged
+                })
+                    .catch(err => {
+                        console.error(err);
                 });
         } else {
-            const salesId = new SalesDetail{
-                customer_id,
-                area,
-                typOfInstallation,
-                deliveryDate,
-                isAgreement,
-                installation_charges,
-                solar_panel_charges,
-                tax,
-                grandTotal,
-                isPaymentComplete,
-            }
+            const salesId = new SalesDetail()
             salesId.customer_id = customer_id;
             salesId.area = area;
-            salesId.typOfInstallation = type_of_installation;
-            salesId.deliveryDate = delivery_date;
+            salesId.type_of_installation = type_of_installation;
+            salesId.delivery_date = delivery_date;
             salesId.isAgreement = '';
             salesId.installation_charges = installCharge;
             salesId.solar_panel_charges = spCharge;
@@ -192,7 +168,7 @@ router.post('/', auth, [
             }
         }
         if (isEdit !== 'N') {
-            return res.status(200).jsin({ payload });
+            return res.status(200).json({ payload });
 		}
         return res.status(201).json({ payload });
 
@@ -208,33 +184,52 @@ router.post('/', auth, [
 // @access Public
 router.get('/', auth, async (req, res) => {
     try {
-        const customerDb = await Customer.findOne({ email_id: req.email_id }).sort({ date: -1 });
+        console.log(req.body.email_id);
+        var customerDb;
+        await Customer.findOne({ email_id: req.body.email_id }).then(result => {
+            if (result) {
+                console.log(result); // Found a matching document
+                customerDb = result
+            } else {
+                console.log('No matching document found');
+            }
+        })
+        .catch(err => {
+            console.error(err);
+        });
+        console.log(customerDb);
+        var userDb;
+        await User.findOne({ email_id: req.body.email_id }).then(result => {
+            if (result) {
+                console.log(result); // Found a matching document
+                userDb = result
+            } else {
+                console.log('No matching document found');
+            }
+        })
+            .catch(err => {
+                console.error(err);
+            });
+        console.log(userDb);
         if (!customerDb) {
             return res.status(200).json({ msg: "New" });
         }
-        const salesDetails = await SalesDetail.findOne({ customer_id: customerDb.id }).sort({ date: -1 });
-        const customer = {
-            user_id,
-            first_name,
-            last_name,
-            email_id,
-            contact,
-            address,
-            zipcode,
-            country,
-            state,
-            county,
-            area,
-            type_of_installation,
-            delivery_date,
-            isAgreement,
-            installation_charges,
-            solar_panel_charges,
-            tax,
-            grandTotal,
-            isPaymentComplete,
-        }
+        var salesDetails;
+        await SalesDetail.findOne({ customer_id: customerDb._id }).then(result => {
+            if (result) {
+                console.log(result); // Found a matching document
+                salesDetails = result
+            } else {
+                console.log('No matching document found');
+            }
+        })
+        .catch(err => {
+            console.error(err);
+        });
+        console.log(salesDetails);
+        const customer = {};
         customer.user_id = customerDb.userid;
+        customer.type_customer = userDb.type_customer;
         customer.first_name = customerDb.first_name;
         customer.last_name = customerDb.last_name;
         customer.email_id = customerDb.email_id;
