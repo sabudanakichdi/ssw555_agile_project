@@ -8,12 +8,12 @@ This project uses MERN (Mongo, Express, React, Node).
 ## Installation
 
 ### Tools:
-Sonar Cloud : Code quality and bug identification
-Codacy: Code analysis and quality management platform
-AWS CodePipeline: For CI/CD pipeline management
-AWS CodeBuild: For CI Continuous Integration
-Elatic BeanStalk: Deploy, manage, and scale web applications and services
-AWS CloudWatch: Logs monitoring
+- Sonar Cloud : Code quality and bug identification
+- Codacy: Code analysis and quality management platform
+- AWS CodePipeline: For CI/CD pipeline management
+- AWS CodeBuild: For CI Continuous Integration
+- Elatic BeanStalk: Deploy, manage, and scale web applications and services
+- AWS CloudWatch: Logs monitoring
 
 ### To install dependencies
 
