@@ -67,3 +67,55 @@ test('disables "Let\'s Talk" button when required fields are empty', () => {
   const messageElement = getByRole("textbox", { name: /Message/i });
   fireEvent.change(messageElement, { target: { value: "Hello world!" } });
 });
+
+test("submitting the form calls the onSubmit function", () => {
+  const handleSubmit = jest.fn();
+  const { getByRole } = render(<ContactUs onSubmit={handleSubmit} />);
+  const buttonElement = getByRole("button", { name: /Let's Talk/i });
+  fireEvent.click(buttonElement);
+  expect(handleSubmit).toHaveBeenCalled();
+});
+
+test("submitting the form clears input fields", () => {
+  const handleSubmit = jest.fn();
+  const { getByRole, getByLabelText } = render(
+    <ContactUs onSubmit={handleSubmit} />
+  );
+  const firstNameElement = getByLabelText(/First Name/i);
+  const lastNameElement = getByLabelText(/Last Name/i);
+  const companyElement = getByLabelText(/Company/i);
+  const emailElement = getByLabelText(/Email/i);
+  const phoneElement = getByLabelText(/Phone Number/i);
+  const messageElement = getByLabelText(/Message/i);
+  const buttonElement = getByRole("button", { name: /Let's Talk/i });
+
+  fireEvent.change(firstNameElement, { target: { value: "John" } });
+  fireEvent.change(lastNameElement, { target: { value: "Doe" } });
+  fireEvent.change(companyElement, { target: { value: "Acme Inc." } });
+  fireEvent.change(emailElement, { target: { value: "john.doe@acme.com" } });
+  fireEvent.change(phoneElement, { target: { value: "1234567890" } });
+  fireEvent.change(messageElement, { target: { value: "Hello world!" } });
+  fireEvent.click(buttonElement);
+
+  expect(firstNameElement.value).toBe("");
+  expect(lastNameElement.value).toBe("");
+  expect(companyElement.value).toBe("");
+  expect(emailElement.value).toBe("");
+  expect(phoneElement.value).toBe("");
+  expect(messageElement.value).toBe("");
+});
+
+test("submitting the form with invalid email displays error message", () => {
+  const handleSubmit = jest.fn();
+  const { getByRole, getByLabelText, getByText } = render(
+    <ContactUs onSubmit={handleSubmit} />
+  );
+  const emailElement = getByLabelText(/Email/i);
+  const buttonElement = getByRole("button", { name: /Let's Talk/i });
+
+  fireEvent.change(emailElement, { target: { value: "invalidemail" } });
+  fireEvent.click(buttonElement);
+
+  expect(handleSubmit).not.toHaveBeenCalled();
+  expect(getByText(/Please enter a valid email address/i)).toBeInTheDocument();
+});
