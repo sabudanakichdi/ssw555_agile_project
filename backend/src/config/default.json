@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://sabudanakichdi:555agile@solarmanagement.yihdjne.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecretKey": "iamking"
+}

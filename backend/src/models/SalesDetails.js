@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const SalesDetailSchema = new Schema({
+const SalesDetailSchema = mongoose.Schema({
 
     id: {
         type: String,
@@ -10,35 +10,35 @@ const SalesDetailSchema = new Schema({
         required: true,
     },
     area: {
-        type: STRING,
+        type: String,
         required: true
     },
     type_of_installation: {
-        type: STRING,
+        type: String,
         required: true
     },
     delivery_date: {
-        type: STRING,
+        type: String,
     },
     isAgreement: {
-        type: STRING,
+        type: String,
         required: false
     },
     installation_charges: {
-        type: STRING,
+        type: String,
     },
     solar_panel_charges: {
-        type: STRING,
+        type: String,
     },
     tax: {
-        type: STRING,
+        type: String,
     },
     grandTotal: {
-        type: STRING,
+        type: String,
     },
     isPaymentComplete: {
-        type: STRING,
+        type: String,
     },
 });
 
-module.exports = mongoose.model("salesDetail", SalesDetailSchema)
+module.exports = mongoose.model("salesdetails", SalesDetailSchema)

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const OrderTrackingSchema = new Schema({
+const OrderTrackingSchema = mongoose.Schema({
 
     id: {
         type: String,
@@ -14,16 +14,16 @@ const OrderTrackingSchema = new Schema({
         required: true,
     },
     bo_status: {
-        type: STRING,
+        type: String,
         required: true
     },
     installation_date: {
-        type: STRING,
+        type: String,
         required: true
     },
     status: {
-        type: STRING,
+        type: String,
     },
 });
 
-module.exports = mongoose.model("orderTracking", OrderTrackingSchema)
+module.exports = mongoose.model("ordertrackings", OrderTrackingSchema)
