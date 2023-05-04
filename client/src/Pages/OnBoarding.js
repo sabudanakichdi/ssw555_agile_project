@@ -2,8 +2,8 @@ function OnBoarding() {
   return (
     <div class="container mx-auto flex p-5 py-24 md:flex-col flex-col items-center  min-h-screen ">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Customer On Boarding
+        <h2 className="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">
+          Customer OnBoarding
         </h2>
       </div>
 
@@ -13,7 +13,7 @@ function OnBoarding() {
             <div>
               <label
                 htmlFor="First Name"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-xl font-medium leading-6 text-gray-900"
               >
                 First Name
               </label>
@@ -32,7 +32,7 @@ function OnBoarding() {
             <div>
               <label
                 htmlFor="First Name"
-                className="block text-sm font-medium leading-6 text-gray-900 mt-2"
+                className="block text-xl font-medium leading-6 text-gray-900 mt-2"
               >
                 Last Name
               </label>
@@ -50,10 +50,48 @@ function OnBoarding() {
             </div>
           </div>
           <div>
+            <label
+              htmlFor="Order-id"
+              className="block text-xl font-medium leading-6 text-gray-900"
+            >
+              Order-id
+            </label>
+
+            <div className="mt-2">
+              <input
+                id="Order-id"
+                name="Order-id"
+                type="String"
+                autoComplete=""
+                required
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm  sm:leading-6"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="Customer-id"
+              className="block text-xl font-medium leading-6 text-gray-900"
+            >
+              Customer-id
+            </label>
+
+            <div className="mt-2">
+              <input
+                id="Customer-id"
+                name="Customer-id"
+                type="String"
+                autoComplete=""
+                required
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div>
             <div>
               <label
                 htmlFor="Address"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-xl font-medium leading-6 text-gray-900"
               >
                 Address
               </label>
@@ -72,16 +110,16 @@ function OnBoarding() {
           </div>
           <div>
             <label
-              htmlFor="Company"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              htmlFor="Contact Number"
+              className="block text-xl font-medium leading-6 text-gray-900"
             >
-              Size
+              Contact Number
             </label>
 
             <div className="mt-2">
               <input
-                id="Size"
-                name="Size"
+                id="Contact Number"
+                name="Contact Number"
                 type="number"
                 autoComplete=""
                 required
@@ -129,7 +167,7 @@ function OnBoarding() {
           <div className="mt-2">
             <label
               htmlFor="First Name"
-              className="block text-sm font-medium leading-6 text-gray-900 mt-2"
+              className="block text-xl font-medium leading-6 text-gray-900 mt-2"
             >
               Installation Type
             </label>
@@ -143,7 +181,7 @@ function OnBoarding() {
               />
               <label
                 for="default-radio-1"
-                class="ml-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                class="ml-2 mt-2 text-xl font-medium text-gray-900 dark:text-gray-300"
               >
                 Full House Roof Installation
               </label>
@@ -158,7 +196,7 @@ function OnBoarding() {
               />
               <label
                 for="default-radio-1"
-                class="ml-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                class="ml-2 mt-2 text-xl font-medium text-gray-900 dark:text-gray-300"
               >
                 Hybrid House Roof Installation
               </label>
@@ -173,7 +211,7 @@ function OnBoarding() {
               />
               <label
                 for="default-radio-1"
-                class="ml-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                class="ml-2 mt-2 text-xl font-medium text-gray-900 dark:text-gray-300"
               >
                 Out of House Roof Installation
               </label>
@@ -183,7 +221,7 @@ function OnBoarding() {
             <div>
               <label
                 htmlFor="Company"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-xl font-medium leading-6 text-gray-900"
               >
                 Estimated Date Of Delivery:
               </label>

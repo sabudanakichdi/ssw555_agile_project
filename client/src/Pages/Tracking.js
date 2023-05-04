@@ -8,7 +8,7 @@ function Tracking() {
   };
 
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 text-xl">
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         {/* <div>
           {" "}
@@ -66,7 +66,9 @@ function Tracking() {
           </div>
         </div> */}
 
-        <h2>Order Summary</h2>
+        <h2>Order Summary: </h2>
+        <p>Order-id</p>
+        <p>Customer-id</p>
         <p>Order placed</p>
         <p>Processing</p>
         <p>Shipped</p>

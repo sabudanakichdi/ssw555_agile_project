@@ -22,6 +22,12 @@ export default function EstimationPage() {
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          First Name:{" "}
+        </div>
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          Last Name:{" "}
+        </div>
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
           Order-id:{" "}
         </div>
         <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">

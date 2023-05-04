@@ -3,7 +3,7 @@ export default function Signup() {
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="mt-10 text-center text-5xl font-bold leading-9 tracking-tight text-gray-900">
             Sign Up
           </h2>
         </div>
@@ -13,7 +13,7 @@ export default function Signup() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-xl font-medium leading-6 text-gray-900"
               >
                 Email address
               </label>
@@ -31,7 +31,7 @@ export default function Signup() {
             <div>
               <label
                 htmlFor="phone"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-xl font-medium leading-6 text-gray-900"
               >
                 Phone Number
               </label>
@@ -50,11 +50,11 @@ export default function Signup() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-xl font-medium leading-6 text-gray-900"
                 >
                   Password
                 </label>
-                <div className="text-sm">
+                <div className="text-xl">
                   <a
                     href="#"
                     className="font-semibold text-indigo-600 hover:text-indigo-500"
@@ -78,7 +78,7 @@ export default function Signup() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign Up
               </button>

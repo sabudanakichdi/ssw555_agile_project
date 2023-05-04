@@ -18,7 +18,7 @@ function MyAccount() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-xl font-medium leading-6 text-gray-900"
                 >
                   Email address
                 </label>
@@ -38,11 +38,11 @@ function MyAccount() {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="password"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-xl font-medium leading-6 text-gray-900"
                   >
                     Password
                   </label>
-                  <div className="text-sm">
+                  <div className="text-xl">
                     <a
                       href="#"
                       className="font-semibold text-indigo-600 hover:text-indigo-500"
@@ -66,14 +66,14 @@ function MyAccount() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Sign in
                 </button>
               </div>
             </form>
 
-            <p className="mt-10 text-center text-sm text-gray-500">
+            <p className="mt-10 text-center text-xl text-gray-500">
               Don't Have An Account?
               <Link
                 to="/Signup"
