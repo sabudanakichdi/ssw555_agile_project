@@ -14,7 +14,7 @@ function Navbar() {
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a
                     href="/"
-                    className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-l font-medium"
+                    className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-3xl font-medium"
                   >
                     AboutUs
                   </a>
@@ -28,14 +28,14 @@ function Navbar() {
 
                   <a
                     href="/ContactUs"
-                    className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-l font-medium"
+                    className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-3xl font-medium"
                   >
                     Contact Us
                   </a>
 
                   <a
                     href="/Pricing"
-                    className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-l font-medium"
+                    className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-3xl font-medium"
                   >
                     Pricing
                   </a>
@@ -47,7 +47,7 @@ function Navbar() {
                   </a> */}
                   <a
                     href="/MyAccount"
-                    className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-l font-medium"
+                    className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-3xl font-medium"
                   >
                     My Account
                   </a>

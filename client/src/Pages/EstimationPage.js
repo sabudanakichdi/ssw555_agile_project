@@ -15,28 +15,81 @@ export default function EstimationPage() {
   return (
     <div class="container mx-auto flex p-5 py-24 md:flex-col flex-col items-center  min-h-screen ">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Estimate :
+        <h2 className="mt-10 text-center text-5xl font-bold leading-9 tracking-tight text-gray-900">
+          Estimation :
         </h2>
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <div className="block text-sm font-medium leading-6 text-gray-900 mt-2">
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          Order-id:{" "}
+        </div>
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          Customer -id:{" "}
+        </div>
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
           Address Provided:{" "}
         </div>
-        <div className="block text-sm font-medium leading-6 text-gray-900 mt-2">
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
           Zipcode:{" "}
         </div>
-        <div className="block text-sm font-medium leading-6 text-gray-900 mt-2">
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
           Type Of Installation{" "}
         </div>
-        <div className="block text-sm font-medium leading-6 text-gray-900 mt-2">
-          Size:{" "}
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          Installation Charges:{" "}
         </div>
-        <div className="block text-sm font-medium leading-6 text-gray-900 mt-2">
-          Solar Panel Type & Charges:{" "}
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          Solar Panel Charges:{" "}
+        </div>
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          Taxes:{" "}
+        </div>
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          Grand-Total:{" "}
+        </div>
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          Payment:{" "}
+        </div>
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          Date of Delivery:{" "}
         </div>
 
+        <div className="block text-xl font-medium leading-6 text-gray-900 mt-2">
+          Solar Panel Type:{" "}
+          <div class="flex items-center justify-center mt-10">
+            <label class="inline-flex items-center">
+              <input
+                type="checkbox"
+                class="form-checkbox h-5 w-5 text-neutral-600"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+              />
+              <span class="ml-2 text-neutral-700 font-medium">
+                I agree to the terms and conditions
+              </span>
+            </label>
+            {agreed && (
+              <Link
+                to="/Agreement"
+                class="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none rounded ml-4"
+              >
+                Continue
+              </Link>
+            )}
+            {agreed && (
+              <button
+                class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none rounded ml-4"
+                onClick={handleDisagree}
+              >
+                Disagree
+              </button>
+            )}
+            <p>
+              <Link to="/Agreement"></Link>
+            </p>
+          </div>
+        </div>
         {/* <div>
                   <label
                     htmlFor="Email
@@ -75,8 +128,7 @@ export default function EstimationPage() {
                   </div>
                 </div> */}
 
-        <div>
-          {" "}
+        {/* <div>
           <div class="agreement-box lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start mb-16 md:mb-0 items-center">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-neutral-900">
               Agreement
@@ -124,9 +176,12 @@ export default function EstimationPage() {
               )}
             </div>
           </div>
-        </div>
-
-        <div></div>
+        </div> */}
+        {/* <div>
+          <p>
+            <Link to="/Agreement">Agreement Pages</Link>
+          </p>
+        </div> */}
       </div>
     </div>
   );

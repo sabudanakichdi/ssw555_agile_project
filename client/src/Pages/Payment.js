@@ -48,6 +48,11 @@ export default function Payment() {
   };
   return (
     <>
+      <div class="container px-5 py-24 mx-auto">
+        <h2 className="mt-5 text-center text-5xl font-bold leading-9 tracking-tight text-gray-900">
+          Customer On Boarding
+        </h2>
+      </div>
       <div class="container mx-auto flex p-5 py-24 md:flex-col flex-col items-center  min-h-screen ">
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form

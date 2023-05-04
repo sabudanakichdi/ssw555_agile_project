@@ -10,7 +10,7 @@ function Tracking() {
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <div>
+        {/* <div>
           {" "}
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" action="#" method="POST">
@@ -64,7 +64,7 @@ function Tracking() {
               </div>
             </form>
           </div>
-        </div>
+        </div> */}
 
         <h2>Order Summary</h2>
         <p>Order placed</p>

@@ -2,7 +2,7 @@ function ContactUs() {
   return (
     <div class="container mx-auto flex p-5 py-24 md:flex-col flex-col items-center  min-h-screen ">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className="mt-10 text-center text-5xl font-bold leading-9 tracking-tight text-gray-900">
           Contact Sales
         </h2>
       </div>
@@ -13,7 +13,7 @@ function ContactUs() {
             <div>
               <label
                 htmlFor="First Name"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-xl font-medium leading-6 text-gray-900"
               >
                 First Name
               </label>
@@ -32,7 +32,7 @@ function ContactUs() {
             <div>
               <label
                 htmlFor="First Name"
-                className="block text-sm font-medium leading-6 text-gray-900 mt-2"
+                className="block text-xl font-medium leading-6 text-gray-900 mt-2"
               >
                 Last Name
               </label>
@@ -52,7 +52,7 @@ function ContactUs() {
           <div>
             <label
               htmlFor="Company"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-xl font-medium leading-6 text-gray-900"
             >
               Company
             </label>
@@ -72,7 +72,7 @@ function ContactUs() {
             <label
               htmlFor="Email
               "
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-xl font-medium leading-6 text-gray-900"
             >
               Email
             </label>
@@ -91,7 +91,7 @@ function ContactUs() {
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-xl font-medium leading-6 text-gray-900"
             >
               Phone Number
             </label>
@@ -110,7 +110,7 @@ function ContactUs() {
             <div>
               <label
                 htmlFor="Message"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-xl font-medium leading-6 text-gray-900"
               >
                 Message
               </label>
@@ -131,7 +131,7 @@ function ContactUs() {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Let's Talk
             </button>
