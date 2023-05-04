@@ -1,7 +1,7 @@
 # Solarproject
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/3617feca7efd4cdeb8e7b216f7b9bf80)](https://app.codacy.com/gh/sabudanakichdi/ssw555_agile_project/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sabudanakichdi_ssw555_agile_project&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sabudanakichdi_ssw555_agile_project)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=sabudanakichdi_ssw555_agile_project)
 
 
 This project uses MERN (Mongo, Express, React, Node).
