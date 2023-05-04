@@ -1,60 +1,58 @@
-import OnBoarding from "./OnBoarding";
-import React from "react";
-import { render } from "@testing-library/react";
-import { screen } from "@testing-library/react";
-import { fireEvent } from "@testing-library/react";
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import OnBoarding from './OnBoarding';
 
-test("renders OnBoarding without crashing", () => {
-  render(<OnBoarding />);
-});
-test("OnBoarding form contains correct input fields", () => {
-  render(<OnBoarding />);
-  expect(screen.getByLabelText(/First Name/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/Last Name/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/Address/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/Size/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/Installation Type/i)).toBeInTheDocument();
-});
-test("OnBoarding form requires all input fields", async () => {
-  render(<OnBoarding />);
-  const submitButton = screen.getByText(/submit/i);
-  fireEvent.click(submitButton);
-  expect(await screen.findAllByRole("alert")).toHaveLength(5); // assumes there are 5 required input fields
-});
-test("OnBoarding input fields accept user input", () => {
-  render(<OnBoarding />);
-  const firstNameInput = screen.getByLabelText(/First Name/i);
-  const lastNameInput = screen.getByLabelText(/Last Name/i);
-  const addressInput = screen.getByLabelText(/Address/i);
-  const sizeInput = screen.getByLabelText(/Size/i);
-  const radioInput = screen.getByLabelText(/Installation Type/i);
+describe('OnBoarding', () => {
+  test('renders all input fields', () => {
+    render(<OnBoarding />);
+    expect(screen.getByLabelText('First Name')).toBeInTheDocument();
+    expect(screen.getByLabelText('Last Name')).toBeInTheDocument();
+    expect(screen.getByLabelText('Order-id')).toBeInTheDocument();
+    expect(screen.getByLabelText('Customer-id')).toBeInTheDocument();
+    expect(screen.getByLabelText('Address')).toBeInTheDocument();
+    expect(screen.getByLabelText('Contact Number')).toBeInTheDocument();
+  });
 
-  fireEvent.change(firstNameInput, { target: { value: "John" } });
-  fireEvent.change(lastNameInput, { target: { value: "Doe" } });
-  fireEvent.change(addressInput, { target: { value: "123 Main St" } });
-  fireEvent.change(sizeInput, { target: { value: "10" } });
-  fireEvent.click(radioInput);
+  test('requires all input fields', () => {
+    render(<OnBoarding />);
+    fireEvent.submit(screen.getByRole('button', { name: 'Submit' }));
+    expect(screen.getByText('First Name is required')).toBeInTheDocument();
+    expect(screen.getByText('Last Name is required')).toBeInTheDocument();
+    expect(screen.getByText('Order-id is required')).toBeInTheDocument();
+    expect(screen.getByText('Customer-id is required')).toBeInTheDocument();
+    expect(screen.getByText('Address is required')).toBeInTheDocument();
+    expect(screen.getByText('Contact Number is required')).toBeInTheDocument();
+  });
 
-  expect(firstNameInput.value).toBe("John");
-  expect(lastNameInput.value).toBe("Doe");
-  expect(addressInput.value).toBe("123 Main St");
-  expect(sizeInput.value).toBe("10");
-  expect(radioInput.checked).toBe(true);
-});
-test("OnBoarding form submission works correctly", async () => {
-  render(<OnBoarding />);
-  const firstNameInput = screen.getByLabelText(/First Name/i);
-  const lastNameInput = screen.getByLabelText(/Last Name/i);
-  const addressInput = screen.getByLabelText(/Address/i);
-  const sizeInput = screen.getByLabelText(/Size/i);
-  const submitButton = screen.getByText(/submit/i);
-
-  fireEvent.change(firstNameInput, { target: { value: "John" } });
-  fireEvent.change(lastNameInput, { target: { value: "Doe" } });
-  fireEvent.change(addressInput, { target: { value: "123 Main St" } });
-  fireEvent.change(sizeInput, { target: { value: "10" } });
-
-  fireEvent.click(submitButton);
-  const alerts = await screen.findAllByRole("alert");
-  expect(alerts).toHaveLength(0); // no alerts means form submission was successful
+  test('submits the form when all input fields are filled', () => {
+    const handleSubmit = jest.fn();
+    render(<OnBoarding onSubmit={handleSubmit} />);
+    fireEvent.change(screen.getByLabelText('First Name'), {
+      target: { value: 'John' },
+    });
+    fireEvent.change(screen.getByLabelText('Last Name'), {
+      target: { value: 'Doe' },
+    });
+    fireEvent.change(screen.getByLabelText('Order-id'), {
+      target: { value: '12345' },
+    });
+    fireEvent.change(screen.getByLabelText('Customer-id'), {
+      target: { value: '67890' },
+    });
+    fireEvent.change(screen.getByLabelText('Address'), {
+      target: { value: '123 Main St' },
+    });
+    fireEvent.change(screen.getByLabelText('Contact Number'), {
+      target: { value: '555-555-5555' },
+    });
+    fireEvent.submit(screen.getByRole('button', { name: 'Submit' }));
+    expect(handleSubmit).toHaveBeenCalledWith({
+      firstName: 'John',
+      lastName: 'Doe',
+      orderId: '12345',
+      customerId: '67890',
+      address: '123 Main St',
+      contactNumber: '555-555-5555',
+    });
+  });
 });
