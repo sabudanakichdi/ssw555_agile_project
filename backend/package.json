@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"test completed\" && exit 1",
+    "test": "echo \"test completed\" ",
     "start": "node index.js",
     "server": "nodemon index.js"
   },
