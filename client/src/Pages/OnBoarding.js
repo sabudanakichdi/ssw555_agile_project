@@ -1,3 +1,19 @@
+import { useState } from "react";
+
+import { createContext } from "react";
+
+export const CustomerIdContext = createContext(null);
+
+export const CustomerIdProvider = ({ children }) => {
+  const [customerId, setCustomerId] = useState("");
+
+  return (
+    <CustomerIdContext.Provider value={{ customerId, setCustomerId }}>
+      {children}
+    </CustomerIdContext.Provider>
+  );
+};
+
 function OnBoarding() {
   return (
     <div class="container mx-auto flex p-5 py-24 md:flex-col flex-col items-center  min-h-screen ">

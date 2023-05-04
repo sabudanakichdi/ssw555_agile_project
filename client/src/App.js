@@ -1,11 +1,12 @@
 // App.js
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
-import BookADemo from "./Pages/BookADemo";
+
+// import BookADemo from "./Pages/BookADemo";
 import ContactUs from "./Pages/ContactUs";
 import Pricing from "./Pages/Pricing";
 import NoMatch from "./Pages/NoMatch";
-import OurWork from "./Pages/OurWork";
+// import OurWork from "./Pages/OurWork";
 import MyAccount from "./Pages/MyAccount";
 import Agreement from "./Pages/Agreement";
 import Signup from "./Pages/Signup";

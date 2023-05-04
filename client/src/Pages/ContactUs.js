@@ -1,3 +1,4 @@
+import React from "react";
 function ContactUs() {
   return (
     <div class="container mx-auto flex p-5 py-24 md:flex-col flex-col items-center  min-h-screen ">
