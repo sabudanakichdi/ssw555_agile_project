@@ -1,0 +1,7 @@
+package-lock.json
+yarn.lock
+public/.DS_Store
+node_modules
+.DS_Store
+.vs/
+.next/
