@@ -51,3 +51,60 @@ it("submits the form with user data", async () => {
   // Use mock function or other means to verify form submission behavior
   expect(mockSubmitFunction).toHaveBeenCalledWith({ email, phone, password });
 });
+
+it("displays an error message if email is left blank", async () => {
+  render(<Signup onSubmit={mockSubmitFunction} />);
+  const emailInput = screen.getByLabelText("Email address");
+  const signUpButton = screen.getByText("Sign Up");
+
+  fireEvent.click(signUpButton);
+
+  const errorMessage = await screen.findByText("Email is required.");
+  expect(errorMessage).toBeInTheDocument();
+});
+
+it("displays an error message if phone number is left blank", async () => {
+  render(<Signup onSubmit={mockSubmitFunction} />);
+  const phoneInput = screen.getByLabelText("Phone Number");
+  const signUpButton = screen.getByText("Sign Up");
+
+  fireEvent.click(signUpButton);
+
+  const errorMessage = await screen.findByText("Phone number is required.");
+  expect(errorMessage).toBeInTheDocument();
+});
+
+it("displays an error message if password is left blank", async () => {
+  render(<Signup onSubmit={mockSubmitFunction} />);
+  const passwordInput = screen.getByLabelText("Password");
+  const signUpButton = screen.getByText("Sign Up");
+
+  fireEvent.click(signUpButton);
+
+  const errorMessage = await screen.findByText("Password is required.");
+  expect(errorMessage).toBeInTheDocument();
+});
+
+it("displays an error message if an invalid email is entered", async () => {
+  render(<Signup onSubmit={mockSubmitFunction} />);
+  const emailInput = screen.getByLabelText("Email address");
+  const signUpButton = screen.getByText("Sign Up");
+
+  fireEvent.change(emailInput, { target: { value: "invalid-email" } });
+  fireEvent.click(signUpButton);
+
+  const errorMessage = await screen.findByText("Email is invalid.");
+  expect(errorMessage).toBeInTheDocument();
+});
+
+it("displays an error message if an invalid phone number is entered", async () => {
+  render(<Signup onSubmit={mockSubmitFunction} />);
+  const phoneInput = screen.getByLabelText("Phone Number");
+  const signUpButton = screen.getByText("Sign Up");
+
+  fireEvent.change(phoneInput, { target: { value: "123" } });
+  fireEvent.click(signUpButton);
+
+  const errorMessage = await screen.findByText("Phone number is invalid.");
+  expect(errorMessage).toBeInTheDocument();
+});
