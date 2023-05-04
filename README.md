@@ -1,14 +1,19 @@
 # Solarproject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/3617feca7efd4cdeb8e7b216f7b9bf80)](https://app.codacy.com/gh/sabudanakichdi/ssw555_agile_project/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
+
+This project uses MERN (Mongo, Express, React, Node).
 
 ## Installation
 
 ### Tools:
-- express - for routing, HTTP helpers, and view system.
-- cors - for providing middleware that allows CORS
-- mysql2 - lets you do Prepared Statements, connect to MySQL Server, provides SSL and Authentication Switch
-- sequelize - promise-based Node.js ORM tool for MySQL
+Sonar Cloud : Code quality and bug identification
+Codacy: Code analysis and quality management platform
+AWS CodePipeline: For CI/CD pipeline management
+AWS CodeBuild: For CI Continuous Integration
+Elatic BeanStalk: Deploy, manage, and scale web applications and services
+AWS CloudWatch: Logs monitoring
 
 ### To install dependencies
 
@@ -17,9 +22,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### To run the app
 
-  npm run dev
+  npm run
 
 ### Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+npm test
  
