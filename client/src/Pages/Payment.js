@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 export default function Payment() {
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
@@ -50,7 +50,7 @@ export default function Payment() {
     <>
       <div class="container px-5 py-24 mx-auto">
         <h2 className="mt-5 text-center text-5xl font-bold leading-9 tracking-tight text-gray-900">
-          Customer On Boarding
+          Payment
         </h2>
       </div>
       <div class="container mx-auto flex p-5 py-24 md:flex-col flex-col items-center  min-h-screen ">
@@ -170,7 +170,12 @@ export default function Payment() {
                 type="submit"
                 className="flex w-full text-xl justify-center rounded-md bg-indigo-600 mt-5 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Pay Now
+                <Link
+                  to="/Tracking"
+                  className="font-semibold leading-6 text-white-600 "
+                >
+                  Pay Now
+                </Link>
               </button>
             </div>
           </form>

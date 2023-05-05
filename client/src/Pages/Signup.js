@@ -1,6 +1,31 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../serverrequest";
 
 export default function Signup() {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/api/register`,
+        {
+          email_id: email.value,
+          password: password.value,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      //console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,7 +36,7 @@ export default function Signup() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -34,10 +59,8 @@ export default function Signup() {
               <label
                 htmlFor="phone"
                 className="block text-xl font-medium leading-6 text-gray-900"
-              >
-                Phone Number
-              </label>
-              <div className="mt-2">
+              ></label>
+              {/* <div className="mt-2">
                 <input
                   id="phone"
                   name="phone"
@@ -45,7 +68,7 @@ export default function Signup() {
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-              </div>
+              </div> */}
             </div>
 
             <div>
@@ -76,19 +99,16 @@ export default function Signup() {
                 />
               </div>
             </div>
-
             <div>
-              <Link to="/Agreement">
-                <button
-                  type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Sign Up
-                </button>
-              </Link>
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Sign Up
+              </button>
             </div>
             <p>
-              <Link to="/Agreement"></Link>
+              <Link to="#"></Link>
             </p>
           </form>
         </div>

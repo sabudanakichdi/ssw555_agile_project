@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { createContext } from "react";
+import axios from "axios";
+import { BASE_URL } from "../serverrequest";
 
 export const EmailContext = createContext();
 
@@ -9,6 +11,33 @@ function MyAccount() {
 
   const handleUserTypeChange = (e) => {
     setUserType(e.target.value);
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/api/login`,
+        {
+          email_id: email.value,
+          password: password.value,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("response", response.data);
+      const token = response.data.token; // Extract token from response data
+      console.log(token);
+      localStorage.setItem("token", response.data.token);
+      // redirect to home page or do something else on success
+    } catch (error) {
+      console.log(error);
+      // display error message to the user
+    }
   };
 
   return (
@@ -23,7 +52,7 @@ function MyAccount() {
             </div>
           </div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="email"

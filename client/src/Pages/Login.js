@@ -1,6 +1,32 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../serverrequest";
 
 export default function Login() {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/api/login`,
+        {
+          email_id: email.value,
+          password: password.value,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+      // redirect to home page or do something else on success
+    } catch (error) {
+      console.log(error);
+      // display error message to the user
+    }
+  };
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,7 +37,7 @@ export default function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
