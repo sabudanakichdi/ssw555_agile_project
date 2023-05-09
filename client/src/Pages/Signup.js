@@ -1,14 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../serverrequest";
-import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
       const { email, password } = event.target.elements;
-      const navigate = useNavigate();
-
     try {
       const response = await axios.post(
         `${BASE_URL}/api/register`,
@@ -23,8 +21,8 @@ export default function Signup() {
         }
       );
         console.log(response.data);
-        alert("Form submitted successfully!");
-        navigate("/MyAccount");
+        alert("Sign up completed successfully!");
+        navigate("/Home");
     } catch (error) {
       console.log(error);
     }
