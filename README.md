@@ -29,4 +29,3 @@ This project uses MERN (Mongo, Express, React, Node).
 ### Running unit tests
 
 npm test
- 

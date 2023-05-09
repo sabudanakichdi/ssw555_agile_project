@@ -1,7 +1,9 @@
-
-package-lock.json
-yarn.lock
-public/.DS_Store
-node_modules
-.DS_Store
-.vs/
+**/.DS_Store
+**/backend/.DS_Store
+**/client/.DS_Store
+**/client/.DS_Store
+**/backend/package-lock.json
+**/client/package-lock.json
+**/client/.vs
+**/backend/.vs
+**/node_modules
