@@ -1,8 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 
+
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [emailId, setEmailId] = useState([]);
+    useEffect(() => {
+        setEmailId(localStorage.getItem("email"));
+    }, []);
+    const SignOutButton = () => {
+        localStorage.clear("token");
+        localStorage.clear("email");
+        localStorage.clear("customerID");
+        setEmailId(null);
+        console.log("User signed out successfully.");
+        alert("User signed out successfully!");
+        window.location.href = "/";
+        
+    };
   return (
     <div>
       <nav className="bg-gray-700">
@@ -50,7 +65,14 @@ function Navbar() {
                     className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-3xl font-medium"
                   >
                     My Account
-                  </a>
+                </a>
+                {emailId != null ? (
+                                      <button onClick={SignOutButton} className=" hover:bg-gray-600 text-white px-3 py-2 rounded-md text-3xl font-medium">
+                                          Sign Out</button>
+                        
+                ) : (
+                    <div />
+                )}
                 </div>
               </div>
             </div>
